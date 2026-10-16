@@ -304,7 +304,7 @@ export const wedding = {
 
   /** Optional background music. Set src to e.g. "/assets/music/shehnai.mp3" to show the toggle. Never autoplays. */
   music: {
-    src: null as string | null,
+    src: "/assets/music/song.mp3" as string | null,
     label: "शहनाई",
   },
 

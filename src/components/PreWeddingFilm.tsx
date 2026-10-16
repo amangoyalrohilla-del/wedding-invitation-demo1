@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { wedding, type FilmClip } from "@/config/wedding";
 import { asset } from "@/lib/utils";
 import { useReveal } from "@/lib/motion";
+import { pauseForVideo, resumeAfterVideo } from "@/lib/music";
 import { Icon } from "./ui/Icon";
 import { SectionHeading } from "./ui/Ornaments";
 import { RoyalButton } from "./ui/RoyalButton";
@@ -60,7 +61,12 @@ function FramedFilm({ clip }: { clip: FilmClip }) {
             preload="none"
             controls={started}
             controlsList="nodownload"
-            onPlay={() => window.dispatchEvent(new CustomEvent(PLAY_EVENT, { detail: clip.id }))}
+            onPlay={() => {
+              pauseForVideo();
+              window.dispatchEvent(new CustomEvent(PLAY_EVENT, { detail: clip.id }));
+            }}
+            onPause={resumeAfterVideo}
+            onEnded={resumeAfterVideo}
             onError={() => setError(true)}
           >
             {clip.webm && <source src={asset(clip.webm)} type="video/webm" />}

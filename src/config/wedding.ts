@@ -241,7 +241,7 @@ export const wedding = {
         titleEn: "Chapter One",
         src: "/assets/video/prewedding-film.mp4",
         poster: "/assets/video/poster-1.jpg",
-        startAt: 0,
+        startAt: 23,
         duration: "0:25",
         orientation: "portrait",
       },
@@ -305,6 +305,7 @@ export const wedding = {
   /** Optional background music. Set src to e.g. "/assets/music/shehnai.mp3" to show the toggle. Never autoplays. */
   music: {
     src: "/assets/music/song.mp3" as string | null,
+    startAt: 23,
     label: "शहनाई",
   },
 

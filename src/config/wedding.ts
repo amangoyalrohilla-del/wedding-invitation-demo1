@@ -59,10 +59,10 @@ export interface FilmClip {
 export const wedding = {
   site: {
     url: "https://rajveer-weds-meera.vercel.app",
-    title: "राजवीर & मीरा · शाही विवाह निमंत्रण",
-    titleEn: "Rajveer & Meera · A Royal Rajasthani Wedding",
+    title: "राजवीर & मीरा · शुभ विवाह निमंत्रण",
+    titleEn: "Rajveer & Meera · Wedding Invitation",
     description:
-      "Rajveer Singh Rathore and Meera Singh Shekhawat invite you to their royal wedding celebrations in Jaipur, 24–25 December 2026.",
+      "आपको सपरिवार सादर आमंत्रित करते हैं — 25 दिसंबर 2026, रामबाग पैलेस, जयपुर। Tap to open the invitation.",
     ogImage: "/assets/og/og-image.jpg",
     locale: "hi_IN",
     timezone: "Asia/Kolkata",

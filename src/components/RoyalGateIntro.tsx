@@ -5,6 +5,7 @@ import { wedding } from "@/config/wedding";
 import { ensureGsap, ScrollTrigger } from "@/lib/motion";
 import { isSmallScreen, prefersReducedMotion } from "@/lib/utils";
 import { useInvite } from "./InviteContext";
+import { playMusic } from "@/lib/music";
 import { DoorPanel, HangingLamp, Pillar } from "./art/DoorPanel";
 import { PetalCanvas } from "./ui/PetalCanvas";
 import { ARCH_INNER, ARCH_OUTER } from "./ui/Ornaments";
@@ -56,6 +57,7 @@ export function RoyalGateIntro() {
   const open = () => {
     if (busy || !root.current) return;
     setBusy(true);
+    playMusic();
     const g = ensureGsap();
     const q = g.utils.selector(root.current);
     const finish = () => {

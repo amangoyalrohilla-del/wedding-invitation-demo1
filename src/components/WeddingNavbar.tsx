@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { wedding } from "@/config/wedding";
-import { asset, cx, scrollToId } from "@/lib/utils";
+import { cx, scrollToId } from "@/lib/utils";
 import { useInvite } from "./InviteContext";
+import { isMusicPlaying, onMusicChange, toggleMusic } from "@/lib/music";
 import { Icon } from "./ui/Icon";
 import { Monogram } from "./ui/Ornaments";
 
@@ -116,34 +117,19 @@ export function WeddingNavbar() {
         </nav>
         <p className="nav__sheet-foot" lang="hi">{wedding.hero.dateDisplay} · {wedding.hero.locationHi}</p>
       </div>
-      {wedding.music.src && <MusicToggle src={asset(wedding.music.src)} label={wedding.music.label} />}
+      {wedding.music.src && <MusicToggle label={wedding.music.label} />}
     </header>
   );
 }
 
-/** Optional background music — never autoplays; starts only when the guest taps. */
-function MusicToggle({ src, label }: { src: string; label: string }) {
-  const audio = useRef<HTMLAudioElement | null>(null);
+function MusicToggle({ label }: { label: string }) {
   const [on, setOn] = useState(false);
-  useEffect(() => () => audio.current?.pause(), []);
-  const toggle = () => {
-    if (!audio.current) {
-      audio.current = new Audio(src);
-      audio.current.loop = true;
-      audio.current.volume = 0.5;
-    }
-    if (on) {
-      audio.current.pause();
-      setOn(false);
-    } else {
-      audio.current
-        .play()
-        .then(() => setOn(true))
-        .catch(() => setOn(false));
-    }
-  };
+  useEffect(() => {
+    setOn(isMusicPlaying());
+    return onMusicChange(setOn);
+  }, []);
   return (
-    <button type="button" className={cx("music", on && "music--on")} onClick={toggle} aria-pressed={on} aria-label={on ? `${label} संगीत बंद करें` : `${label} संगीत चलाएँ`}>
+    <button type="button" className={cx("music", on && "music--on")} onClick={toggleMusic} aria-pressed={on} aria-label={on ? `${label} संगीत बंद करें` : `${label} संगीत चलाएँ`}>
       <Icon name={on ? "volume" : "mute"} size={18} />
       <span className="music__bars" aria-hidden="true"><i /><i /><i /></span>
     </button>

@@ -1,0 +1,29 @@
+{
+  "name": "royal-rajasthani-wedding-invite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single-page royal Rajasthani wedding invitation (Next.js + GSAP). All content lives in src/config/wedding.ts.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "preview:static": "node scripts/build-preview.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.12.7",
+    "next": "^15.5.9",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}
